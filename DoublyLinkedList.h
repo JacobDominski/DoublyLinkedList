@@ -14,6 +14,7 @@ public:
 
 	Node<T>* NodeExists(int key);
 	void Append(T v, int k = -1);
+	void Prepend(T v, int k = -1);
 	int FindLargestKey();
 	void PrintList();
 
@@ -98,6 +99,17 @@ void DoublyLinkedList<T>::Append(T v, int k) {
 }
 
 template<typename T>
+void DoublyLinkedList<T>::Prepend(T v, int k)
+{
+	if (k < 0) {
+		k = this->FindLargestKey() + 1;
+	}
+	//create new node
+	Node<T>* node = new Node<T>(k, v);
+
+}
+
+template<typename T>
 int DoublyLinkedList<T>::FindLargestKey() {
 	Node<T>* ptr = head;
 	int highestKey = 0;
@@ -113,7 +125,17 @@ int DoublyLinkedList<T>::FindLargestKey() {
 }
 
 template<typename T>
-inline void DoublyLinkedList<T>::PrintList()
+void DoublyLinkedList<T>::PrintList()
 {
-
+	Node<T>* ptr = head;
+	int counter = 0;
+	while (ptr != nullptr) {
+		std::cout << "=> { key: " << ptr->GetKey() << ", data: " << ptr->GetData() << " } <=";
+		if (counter % 3 == 2) {
+			std::cout << std::endl;
+		}
+		ptr = ptr->GetNext();
+		counter++;
+	}
+	std::cout << "\nThere are " << counter << " nodes in the linked list!" << std::endl;
 }
