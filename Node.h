@@ -1,28 +1,31 @@
 #pragma once
+//included for the use of NULL
 #include <cstddef>
 
+//template to add any data type
 template <typename T>
+//class node holds key, data, next ptr, and previous ptr.
 class Node
 {
 public:
-
+	//two constructors
 	Node();
+	//this constructor initializes the key and value
 	Node(int k, T v);
-	
+
+	//these are the set and get methods for the four pieces of data. 
 	void SetKey(int k);
 	int GetKey();
-	
 	void SetData(T v);
 	T GetData();
-	
 	void SetNext(Node<T>* n);
 	Node<T>* GetNext();
-	
 	void SetPrevious(Node<T>* n);
 	Node<T>* GetPrevious();
-	
+
 
 private:
+	//this data is private for encapsulation
 	int key;
 	T data;
 	Node<T>* next;
@@ -31,7 +34,7 @@ private:
 
 template<typename T>
 Node<T>::Node() {
-	//initialze key and data
+	//initialze key and data to nothing and 0
 	key = 0;
 	data = NULL;
 	next = nullptr;
@@ -40,7 +43,7 @@ Node<T>::Node() {
 
 template<typename T>
 Node<T>::Node(int k, T v) {
-	//initialze key and data
+	//initialze key and data to the incoming values
 	key = k;
 	data = v;
 	next = nullptr;
